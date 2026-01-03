@@ -19,7 +19,6 @@ function StudentForm({ onAdd }) {
 
     const { name, roll, email, course } = formData;
 
-    // Validation
     if (!name || !roll || !email || !course) {
       setError("All fields are required");
       return;
@@ -42,7 +41,7 @@ function StudentForm({ onAdd }) {
   };
 
   return (
-    <div>
+    <div className="card">
       <h4>Add Student</h4>
 
       {error && <p style={{ color: "red" }}>{error}</p>}

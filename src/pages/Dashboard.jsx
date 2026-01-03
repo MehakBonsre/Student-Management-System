@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import StudentForm from "../components/StudentForm";
 import StudentTable from "../components/StudentTable";
+import "../App.css";
 
 function Dashboard() {
   const [students, setStudents] = useState([]);
@@ -11,18 +12,25 @@ function Dashboard() {
   };
 
   const deleteStudent = (index) => {
-    const updatedStudents = students.filter((_, i) => i !== index);
-    setStudents(updatedStudents);
+    setStudents(students.filter((_, i) => i !== index));
   };
 
   return (
     <>
       <Navbar />
-      <div style={{ padding: "2rem" }}>
-        <h3>Student Dashboard</h3>
 
-        <StudentForm onAdd={addStudent} />
-        <StudentTable students={students} onDelete={deleteStudent} />
+      <div className="dashboard">
+        <h2>Student Dashboard</h2>
+
+        {/* Add Student Card */}
+        <div className="card">
+          <StudentForm onAdd={addStudent} />
+        </div>
+
+        {/* Student List Card */}
+        <div className="card">
+          <StudentTable students={students} onDelete={deleteStudent} />
+        </div>
       </div>
     </>
   );
